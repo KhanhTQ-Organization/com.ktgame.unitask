@@ -15,5 +15,8 @@
     "async",
     "Task",
     "UniTask"
-  ]
+  ],
+  "publishConfig": {
+    "registry": "http://localhost:4873/"
+  }
 }
