@@ -29,4 +29,4 @@ jobs:
       run: npm install
 
     - name: Publish package to Verdaccio
-      run: npm publish --registry http://localhost:4873/
+      run: npm publish --registry https://1397-27-72-62-246.ngrok-free.app
