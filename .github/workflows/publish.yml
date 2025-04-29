@@ -20,12 +20,13 @@ jobs:
 
     - name: Authenticate with Verdaccio
       run: |
-        echo "//your-domain-or-ip:4873/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+        echo "${NODE_AUTH_NPMRC}" > ~/.npmrc
+        echo "always-auth=true" >> ~/.npmrc
+      env:
+        NODE_AUTH_NPMRC: ${{ secrets.VERDACCIO_TOKEN }}
 
     - name: Install dependencies
       run: npm install
 
     - name: Publish package to Verdaccio
-      run: npm publish --registry http://your-domain-or-ip:4873/
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.VERDACCIO_TOKEN }}
+      run: npm publish --registry http://localhost:4873/
