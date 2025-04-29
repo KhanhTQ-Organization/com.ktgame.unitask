@@ -1,27 +1,31 @@
-name: CI
+name: Publish to Verdaccio
+
 on:
   push:
     branches:
       - main
 
 jobs:
-  release:
-    name: Release
+  publish:
     runs-on: ubuntu-latest
-    permissions:   # ✅ Grant permissions
-      contents: write
-      issues: write
-      pull-requests: write
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
-      - name: Release
-        uses: cycjimmy/semantic-release-action@v3
-        with:
-          extra_plugins: |
-            @semantic-release/changelog
-            @semantic-release/git
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+
+    - name: Authenticate with Verdaccio
+      run: |
+        echo "//your-domain-or-ip:4873/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Publish package to Verdaccio
+      run: npm publish --registry http://your-domain-or-ip:4873/
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.VERDACCIO_TOKEN }}
