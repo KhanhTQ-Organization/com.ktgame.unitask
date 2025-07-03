@@ -1,22 +1,22 @@
 {
-    "name": "com.ktgame.unitask",
-    "displayName": "com.ktgame.unitask",
-    "author": {
-        "name": "ktgame",
-        "email": "khanhquang0912qh@gmail.com",
-        "url": "https://github.com/KhanhTQ-hub"
-    },
-    "version": "1.0.1",
-    "unity": "2019.4",
-    "description": "Provides an efficient async/await integration to Unity.",
-    "documentationUrl": "https://github.com/Cysharp/UniTask",
-    "keywords": [
-        "async/await",
-        "async",
-        "Task",
-        "UniTask"
-    ],
-    "publishConfig": {
-        "registry": "http://<your-public-ip>:4873/"
-    }
+  "name": "com.ktgame.unitask",
+  "displayName": "com.ktgame.unitask",
+  "author": {
+    "name": "ktgame",
+    "email": "khanhquang0912qh@gmail.com",
+    "url": "https://github.com/KhanhTQ-hub"
+  },
+  "version": "1.0.1",
+  "unity": "2019.4",
+  "description": "Provides an efficient async/await integration to Unity.",
+  "documentationUrl": "https://github.com/Cysharp/UniTask",
+  "keywords": [
+    "async/await",
+    "async",
+    "Task",
+    "UniTask"
+  ],
+  "publishConfig": {
+    "registry": "http://3.25.208.95:4873"
+  }
 }

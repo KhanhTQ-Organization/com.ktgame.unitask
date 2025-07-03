@@ -1,23 +1,31 @@
-name: CI
+name: CI/CD - Release & Publish to Verdaccio
+
 on:
   push:
     branches:
       - main
 
 jobs:
-  release:
-    name: Release
+  release-and-publish:
+    name: 🔖 Release & 📦 Publish
     runs-on: ubuntu-latest
-    permissions:   # ✅ Grant permissions
+    permissions:
       contents: write
       issues: write
       pull-requests: write
+
     steps:
-      - uses: actions/checkout@v3
+      - name: 🛎 Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Release
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: 🚀 Semantic Release
         uses: cycjimmy/semantic-release-action@v3
         with:
           extra_plugins: |
@@ -25,3 +33,11 @@ jobs:
             @semantic-release/git
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🔐 Authenticate to Verdaccio
+        run: |
+          yarn install
+          echo "//3.25.208.95:4873/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.VERDACCIO_TOKEN}}
