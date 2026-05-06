@@ -241,5 +241,6 @@ namespace Cysharp.Threading.Tasks
                 self.awaiter = default;
             }
         }
+        
     }
 }
