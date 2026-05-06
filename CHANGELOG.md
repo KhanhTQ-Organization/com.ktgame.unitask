@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/KhanhTQ-Organization/com.ktgame.unitask/compare/v1.0.2...v1.0.3) (2026-05-06)
+
+
+### Bug Fixes
+
+* rl ([b8be782](https://github.com/KhanhTQ-Organization/com.ktgame.unitask/commit/b8be782d744ecfb87156806e094453273657308e))
+
 ## [1.0.2](https://github.com/KhanhTQ-hub/com.ktgame.unitask/compare/v1.0.1...v1.0.2) (2025-07-03)
 
 
